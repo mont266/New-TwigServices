@@ -1,0 +1,84 @@
+{
+  "entities": {
+    "Course": {
+      "title": "Course",
+      "description": "An e-learning course offered by Twig Services.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The title of the course."
+        },
+        "description": {
+          "type": "string",
+          "description": "A detailed description of the course."
+        },
+        "thumbnail": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the course thumbnail image."
+        },
+        "category": {
+          "type": "string",
+          "enum": ["Health & Safety", "HR & Business Skills", "Health and Social Care"],
+          "description": "The category the course belongs to."
+        },
+        "cpdUnits": {
+          "type": "number",
+          "description": "Number of CPD units awarded upon completion."
+        },
+        "totalTime": {
+          "type": "string",
+          "description": "Estimated time to complete the course (e.g., '2 Hours')."
+        },
+        "price": {
+          "type": "number",
+          "description": "The price of the course in GBP."
+        },
+        "purchaseLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link to the 3rd party purchase page."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the course was created."
+        }
+      },
+      "required": ["title", "description", "thumbnail", "category", "cpdUnits", "totalTime", "price", "purchaseLink", "createdAt"]
+    },
+    "User": {
+      "title": "User",
+      "description": "A registered user, potentially an admin.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The user's email address."
+        },
+        "role": {
+          "type": "string",
+          "enum": ["admin", "user"],
+          "description": "The user's role."
+        }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/courses/{courseId}": {
+      "schema": {
+        "$ref": "#/entities/Course"
+      },
+      "description": "Collection of all e-learning courses."
+    },
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/User"
+      },
+      "description": "Collection of user profiles and roles."
+    }
+  }
+}
