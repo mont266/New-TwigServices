@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { collection, addDoc, deleteDoc, doc, serverTimestamp, getDocFromServer } from 'firebase/firestore';
+import { collection, addDoc, deleteDoc, doc, serverTimestamp, getDocFromServer, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, auth, logout, storage } from '../firebase';
 import { Course, CourseCategory } from '../types';
-import { Trash2, Plus, LogOut, ShieldAlert, Database, Video, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Trash2, Plus, LogOut, ShieldAlert, Database, Video, CheckCircle2, AlertCircle, Edit } from 'lucide-react';
 import { COURSES } from '../data';
 
 interface AdminDashboardProps {
@@ -17,6 +17,7 @@ export default function AdminDashboard({ courses }: AdminDashboardProps) {
   const [success, setSuccess] = useState('');
   const [connectionWarning, setConnectionWarning] = useState('');
   const [thumbnailFile, setThumbnailFile] = useState<File | null>(null);
+  const [editingCourseId, setEditingCourseId] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [formData, setFormData] = useState({
@@ -55,7 +56,7 @@ export default function AdminDashboard({ courses }: AdminDashboardProps) {
     testConnection();
   }, []);
 
-  const handleAddCourse = async (e: React.FormEvent) => {
+  const handleSubmitCourse = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError('');
@@ -80,40 +81,64 @@ export default function AdminDashboard({ courses }: AdminDashboardProps) {
         thumbnail: thumbnailUrl,
         cpdUnits: Number(formData.cpdUnits),
         price: Number(formData.price),
-        createdAt: serverTimestamp()
       };
       
       if (!courseData.videoUrl) {
         delete courseData.videoUrl;
       }
 
-      await addDoc(collection(db, 'courses'), courseData);
-      
-      // Reset form
-      setThumbnailFile(null);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
+      if (editingCourseId) {
+        await updateDoc(doc(db, 'courses', editingCourseId), courseData);
+        setSuccess('Course updated successfully!');
+      } else {
+        courseData.createdAt = serverTimestamp();
+        await addDoc(collection(db, 'courses'), courseData);
+        setSuccess('Course added successfully!');
       }
-      setFormData({
-        title: '',
-        description: '',
-        thumbnail: '',
-        videoUrl: '',
-        category: 'Health & Safety',
-        cpdUnits: 1,
-        totalTime: '1 Hour',
-        price: 0,
-        purchaseLink: ''
-      });
       
-      setSuccess('Course added successfully!');
+      cancelEdit();
       setTimeout(() => setSuccess(''), 4000);
     } catch (err: any) {
       console.error(err);
-      setError(err.message || 'Failed to add course. Ensure you have admin rights.');
+      setError(err.message || 'Failed to save course. Ensure you have admin rights.');
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleEditClick = (course: Course) => {
+    setEditingCourseId(course.id);
+    setFormData({
+      title: course.title,
+      description: course.description,
+      thumbnail: course.thumbnail,
+      videoUrl: course.videoUrl || '',
+      category: course.category,
+      cpdUnits: course.cpdUnits,
+      totalTime: course.totalTime,
+      price: course.price,
+      purchaseLink: course.purchaseLink
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const cancelEdit = () => {
+    setEditingCourseId(null);
+    setThumbnailFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+    setFormData({
+      title: '',
+      description: '',
+      thumbnail: '',
+      videoUrl: '',
+      category: 'Health & Safety',
+      cpdUnits: 1,
+      totalTime: '1 Hour',
+      price: 0,
+      purchaseLink: ''
+    });
   };
 
   const handleSeedData = async () => {
@@ -191,8 +216,8 @@ export default function AdminDashboard({ courses }: AdminDashboardProps) {
               )}
 
               <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <Plus className="w-5 h-5 text-primary-500" />
-                Add New Course
+                {editingCourseId ? <Edit className="w-5 h-5 text-primary-500" /> : <Plus className="w-5 h-5 text-primary-500" />}
+                {editingCourseId ? 'Edit Course' : 'Add New Course'}
               </h2>
               
               {error && (
@@ -208,7 +233,7 @@ export default function AdminDashboard({ courses }: AdminDashboardProps) {
                 </div>
               )}
 
-              <form onSubmit={handleAddCourse} className="space-y-4">
+              <form onSubmit={handleSubmitCourse} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Title</label>
                   <input required type="text" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all" />
@@ -277,9 +302,16 @@ export default function AdminDashboard({ courses }: AdminDashboardProps) {
                   <input required type="url" placeholder="https://..." value={formData.purchaseLink} onChange={e => setFormData({...formData, purchaseLink: e.target.value})} className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all" />
                 </div>
 
-                <button disabled={loading} type="submit" className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-2.5 rounded-lg transition-colors disabled:opacity-70">
-                  {loading ? 'Adding...' : 'Add Course'}
-                </button>
+                <div className="flex gap-3 pt-2">
+                  <button disabled={loading} type="submit" className="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-medium py-2.5 rounded-lg transition-colors disabled:opacity-70">
+                    {loading ? (editingCourseId ? 'Updating...' : 'Adding...') : (editingCourseId ? 'Update Course' : 'Add Course')}
+                  </button>
+                  {editingCourseId && (
+                    <button type="button" onClick={cancelEdit} disabled={loading} className="px-6 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium rounded-lg transition-colors disabled:opacity-70">
+                      Cancel
+                    </button>
+                  )}
+                </div>
               </form>
             </div>
           </div>
@@ -319,13 +351,22 @@ export default function AdminDashboard({ courses }: AdminDashboardProps) {
                         <p className="text-sm text-slate-500 mb-2">{course.category} • £{course.price.toFixed(2)}</p>
                         <p className="text-sm text-slate-600 line-clamp-2">{course.description}</p>
                       </div>
-                      <button 
-                        onClick={() => handleDeleteCourse(course.id)}
-                        className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                        title="Delete Course"
-                      >
-                        <Trash2 className="w-5 h-5" />
-                      </button>
+                      <div className="flex flex-col gap-2">
+                        <button 
+                          onClick={() => handleEditClick(course)}
+                          className="p-2 text-slate-400 hover:text-primary-500 hover:bg-primary-50 rounded-lg transition-colors"
+                          title="Edit Course"
+                        >
+                          <Edit className="w-5 h-5" />
+                        </button>
+                        <button 
+                          onClick={() => handleDeleteCourse(course.id)}
+                          className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                          title="Delete Course"
+                        >
+                          <Trash2 className="w-5 h-5" />
+                        </button>
+                      </div>
                     </div>
                   ))
                 )}

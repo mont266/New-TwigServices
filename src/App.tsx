@@ -9,10 +9,11 @@ import CourseCard from './components/CourseCard';
 import Footer from './components/Footer';
 import AdminDashboard from './components/AdminDashboard';
 import { CourseCategory, Course } from './types';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Search } from 'lucide-react';
 
 export default function App() {
   const [activeCategory, setActiveCategory] = useState<CourseCategory | 'All'>('All');
+  const [searchQuery, setSearchQuery] = useState('');
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAdminView, setIsAdminView] = useState(false);
@@ -52,9 +53,12 @@ export default function App() {
     'Health and Social Care'
   ];
 
-  const filteredCourses = activeCategory === 'All' 
-    ? courses 
-    : courses.filter(course => course.category === activeCategory);
+  const filteredCourses = courses.filter(course => {
+    const matchesCategory = activeCategory === 'All' || course.category === activeCategory;
+    const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          course.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
@@ -78,6 +82,20 @@ export default function App() {
                   <p className="text-lg text-slate-600 max-w-2xl mx-auto">
                     Browse our comprehensive range of accredited e-learning courses designed to meet your organization's training needs.
                   </p>
+                </div>
+
+                {/* Search Bar */}
+                <div className="max-w-md mx-auto mb-8 relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <Search className="h-5 w-5 text-slate-400" />
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Search courses by title or description..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="block w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl leading-5 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 sm:text-sm transition-all shadow-sm"
+                  />
                 </div>
 
                 {/* Category Filter */}
