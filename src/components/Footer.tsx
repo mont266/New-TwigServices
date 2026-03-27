@@ -1,4 +1,4 @@
-import { BookOpen } from 'lucide-react';
+import Logo from './Logo';
 
 export default function Footer() {
   return (
@@ -6,13 +6,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="bg-primary-500 text-white p-2 rounded-xl">
-                <BookOpen className="w-6 h-6" />
-              </div>
-              <span className="font-bold text-2xl text-white tracking-tight">
-                Twig <span className="text-primary-500">Services</span>
-              </span>
+            <div className="mb-6">
+              <Logo className="scale-75 origin-left" />
             </div>
             <p className="text-slate-400 max-w-sm mb-6">
               Your trusted partner for premium e-learning. We provide accredited courses to help your workforce stay compliant, safe, and skilled.

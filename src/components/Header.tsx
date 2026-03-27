@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Menu, X, BookOpen, Shield } from 'lucide-react';
+import { Menu, X, Shield } from 'lucide-react';
 import { loginWithGoogle, auth } from '../firebase';
+import Logo from './Logo';
 
 interface HeaderProps {
   onAdminClick: () => void;
@@ -22,13 +23,8 @@ export default function Header({ onAdminClick, isAdminView }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => !isAdminView && window.scrollTo(0,0)}>
-            <div className="bg-primary-500 text-white p-2 rounded-xl">
-              <BookOpen className="w-6 h-6" />
-            </div>
-            <span className="font-bold text-2xl text-slate-800 tracking-tight">
-              Twig <span className="text-primary-500">Services</span>
-            </span>
+          <div className="flex items-center cursor-pointer" onClick={() => !isAdminView && window.scrollTo(0,0)}>
+            <Logo className="scale-75 origin-left" />
           </div>
 
           {/* Desktop Navigation */}
