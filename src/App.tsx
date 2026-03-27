@@ -6,6 +6,10 @@ import { db, auth } from './firebase';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import WhyChooseUs from './components/WhyChooseUs';
+import TrustpilotReviews from './components/TrustpilotReviews';
+import ClientPortal from './components/ClientPortal';
+import LoginPage from './components/LoginPage';
+import QuoteCalculator from './components/QuoteCalculator';
 import CourseCard from './components/CourseCard';
 import Footer from './components/Footer';
 import AdminDashboard from './components/AdminDashboard';
@@ -20,6 +24,7 @@ export default function App() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [isAdminView, setIsAdminView] = useState(false);
+  const [isLoginView, setIsLoginView] = useState(false);
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
@@ -83,15 +88,20 @@ export default function App() {
       <Header 
         isAdminView={isAdminView} 
         onAdminClick={() => setIsAdminView(!isAdminView)} 
+        onHomeClick={() => setIsLoginView(false)}
       />
       
       <main className="flex-grow">
         {isAdminView ? (
           <AdminDashboard courses={courses} />
+        ) : isLoginView ? (
+          <LoginPage onBack={() => setIsLoginView(false)} />
         ) : (
           <>
             <Hero />
             <WhyChooseUs />
+            <TrustpilotReviews />
+            <ClientPortal onLoginClick={() => setIsLoginView(true)} />
             
             {/* Courses Section */}
             <section id="courses" className="py-20 bg-slate-50">
@@ -182,11 +192,13 @@ export default function App() {
                 )}
               </div>
             </section>
+
+            <QuoteCalculator />
           </>
         )}
       </main>
 
-      <Footer />
+      <Footer onAdminClick={() => setIsAdminView(!isAdminView)} />
     </div>
   );
 }

@@ -1,6 +1,38 @@
+import { useState, useEffect } from 'react';
 import Logo from './Logo';
+import PrivacyPolicyModal from './PrivacyPolicyModal';
+import TermsAndConditionsModal from './TermsAndConditionsModal';
 
-export default function Footer() {
+interface FooterProps {
+  onAdminClick?: () => void;
+}
+
+export default function Footer({ onAdminClick }: FooterProps) {
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isPrivacyModalOpen || isTermsModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isPrivacyModalOpen, isTermsModalOpen]);
+
+  const handleAdminLogin = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onAdminClick) {
+      const { auth, loginWithGoogle } = await import('../firebase');
+      if (!auth.currentUser) {
+        await loginWithGoogle();
+      }
+      onAdminClick();
+    }
+  };
+
   return (
     <footer className="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,8 +60,25 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><a href="#" className="hover:text-primary-400 transition-colors">About Us</a></li>
               <li><a href="#" className="hover:text-primary-400 transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-colors">Terms & Conditions</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-colors">Privacy Policy</a></li>
+              <li>
+                <button 
+                  onClick={() => setIsTermsModalOpen(true)} 
+                  className="hover:text-primary-400 transition-colors"
+                >
+                  Terms &amp; Conditions
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => setIsPrivacyModalOpen(true)} 
+                  className="hover:text-primary-400 transition-colors"
+                >
+                  Privacy Policy
+                </button>
+              </li>
+              {onAdminClick && (
+                <li><a href="#" onClick={handleAdminLogin} className="hover:text-primary-400 transition-colors">Admin Login</a></li>
+              )}
             </ul>
           </div>
         </div>
@@ -55,6 +104,14 @@ export default function Footer() {
           </a>
         </div>
       </div>
+      <PrivacyPolicyModal 
+        isOpen={isPrivacyModalOpen} 
+        onClose={() => setIsPrivacyModalOpen(false)} 
+      />
+      <TermsAndConditionsModal 
+        isOpen={isTermsModalOpen} 
+        onClose={() => setIsTermsModalOpen(false)} 
+      />
     </footer>
   );
 }
