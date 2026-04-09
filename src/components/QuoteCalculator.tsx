@@ -40,14 +40,14 @@ export default function QuoteCalculator() {
   };
 
   return (
-    <section className="py-24 bg-slate-50 border-b border-slate-100">
+    <section className="py-24 bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-semibold text-sm mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-semibold text-sm mb-6"
           >
             <Calculator className="w-4 h-4" />
             Instant Quote
@@ -57,7 +57,7 @@ export default function QuoteCalculator() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight"
+            className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight"
           >
             Calculate Your Training Costs
           </motion.h2>
@@ -66,7 +66,7 @@ export default function QuoteCalculator() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-600"
+            className="text-lg text-slate-600 dark:text-slate-400"
           >
             Get an instant estimate for your organization. We offer flexible pricing plans for teams of all sizes.
           </motion.p>
@@ -78,20 +78,20 @@ export default function QuoteCalculator() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-5 bg-white rounded-3xl p-8 shadow-sm border border-slate-100"
+            className="lg:col-span-5 bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700"
           >
-            <h3 className="text-xl font-bold text-slate-900 mb-6">Your Requirements</h3>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Your Requirements</h3>
             
             <div className="space-y-6">
               <div>
-                <label className="flex items-center gap-2 text-sm font-medium text-slate-700 mb-2">
+                <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                   <Users className="w-4 h-4 text-primary-500" />
                   Number of Employees
                 </label>
                 <select 
                   value={employees}
                   onChange={(e) => setEmployees(e.target.value)}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white appearance-none"
+                  className="w-full px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all bg-white dark:bg-slate-900 text-slate-900 dark:text-white appearance-none"
                   style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: `right 0.75rem center`, backgroundRepeat: `no-repeat`, backgroundSize: `1.5em 1.5em` }}
                 >
                   {Object.keys(pricingTiers).map(range => (

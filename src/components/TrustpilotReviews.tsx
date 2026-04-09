@@ -24,7 +24,7 @@ const reviews = [
 
 export default function TrustpilotReviews() {
   return (
-    <section className="py-20 bg-white border-t border-slate-100">
+    <section className="py-20 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <motion.div 
@@ -33,7 +33,7 @@ export default function TrustpilotReviews() {
             viewport={{ once: true }}
             className="flex justify-center items-center gap-2 mb-4"
           >
-            <span className="text-2xl font-bold text-slate-900">Great</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white">Great</span>
             <div className="flex gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
                 <div key={star} className={`${star <= 4 ? 'bg-[#00b67a]' : 'bg-[#dcdce6]'} p-1 rounded-sm`}>
@@ -47,9 +47,9 @@ export default function TrustpilotReviews() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-slate-600 flex items-center justify-center gap-1"
+            className="text-slate-600 dark:text-slate-400 flex items-center justify-center gap-1"
           >
-            Based on reviews on <span className="font-bold text-slate-900 flex items-center gap-1 ml-1"><Star className="w-4 h-4 text-[#00b67a] fill-[#00b67a]" /> Trustpilot</span>
+            Based on reviews on <span className="font-bold text-slate-900 dark:text-white flex items-center gap-1 ml-1"><Star className="w-4 h-4 text-[#00b67a] fill-[#00b67a]" /> Trustpilot</span>
           </motion.p>
         </div>
 
@@ -61,7 +61,7 @@ export default function TrustpilotReviews() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-md dark:hover:shadow-slate-800/50 transition-shadow"
             >
               <div className="flex gap-1 mb-4">
                 {[1, 2, 3, 4, 5].map((star) => (
@@ -70,11 +70,11 @@ export default function TrustpilotReviews() {
                   </div>
                 ))}
               </div>
-              <h3 className="font-bold text-slate-900 mb-2 text-lg leading-tight">"{review.title}"</h3>
-              <p className="text-slate-600 mb-6 text-sm leading-relaxed">
+              <h3 className="font-bold text-slate-900 dark:text-white mb-2 text-lg leading-tight">"{review.title}"</h3>
+              <p className="text-slate-600 dark:text-slate-300 mb-6 text-sm leading-relaxed">
                 {review.text}
               </p>
-              <div className="font-medium text-slate-900 text-sm">
+              <div className="font-medium text-slate-900 dark:text-white text-sm">
                 {review.author}
               </div>
             </motion.div>

@@ -26,6 +26,24 @@ export default function App() {
   const [isAdminView, setIsAdminView] = useState(false);
   const [isLoginView, setIsLoginView] = useState(false);
   const [user, setUser] = useState<any>(null);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') === 'dark';
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
   useEffect(() => {
     const unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
@@ -89,6 +107,8 @@ export default function App() {
         isAdminView={isAdminView} 
         onAdminClick={() => setIsAdminView(!isAdminView)} 
         onHomeClick={() => setIsLoginView(false)}
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
       />
       
       <main className="flex-grow">
@@ -104,11 +124,11 @@ export default function App() {
             <ClientPortal onLoginClick={() => setIsLoginView(true)} />
             
             {/* Courses Section */}
-            <section id="courses" className="py-20 bg-slate-50">
+            <section id="courses" className="py-20 bg-slate-50 dark:bg-slate-900 transition-colors">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Our Course Catalog</h2>
-                  <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Our Course Catalog</h2>
+                  <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
                     Browse our comprehensive range of accredited e-learning courses designed to meet your organization's training needs.
                   </p>
                 </div>
@@ -124,15 +144,15 @@ export default function App() {
                       placeholder="Search courses by title or description..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="block w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl leading-5 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 sm:text-sm transition-all shadow-sm"
+                      className="block w-full pl-11 pr-4 py-3 border border-slate-200 dark:border-slate-700 rounded-xl leading-5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 sm:text-sm transition-all shadow-sm"
                     />
                   </div>
                   <div className="sm:w-64 flex-shrink-0 relative">
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
-                      className="block w-full pl-4 pr-10 py-3 border border-slate-200 rounded-xl leading-5 bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 sm:text-sm transition-all shadow-sm cursor-pointer appearance-none"
-                      style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: `right 0.75rem center`, backgroundRepeat: `no-repeat`, backgroundSize: `1.5em 1.5em` }}
+                      className="block w-full pl-4 pr-10 py-3 border border-slate-200 dark:border-slate-700 rounded-xl leading-5 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 sm:text-sm transition-all shadow-sm cursor-pointer appearance-none"
+                      style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='${isDarkMode ? '%2394a3b8' : '%236b7280'}' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: `right 0.75rem center`, backgroundRepeat: `no-repeat`, backgroundSize: `1.5em 1.5em` }}
                     >
                       <option value="A-Z">Alphabetical (A-Z)</option>
                       <option value="Z-A">Alphabetical (Z-A)</option>
@@ -151,7 +171,7 @@ export default function App() {
                       className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
                         activeCategory === category
                           ? 'bg-primary-500 text-white shadow-md shadow-primary-500/20'
-                          : 'bg-white text-slate-600 hover:bg-primary-50 hover:text-primary-600 border border-slate-200'
+                          : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-slate-700 hover:text-primary-600 dark:hover:text-primary-400 border border-slate-200 dark:border-slate-700'
                       }`}
                     >
                       {category}
@@ -176,7 +196,7 @@ export default function App() {
                       <div className="mt-12 text-center">
                         <button
                           onClick={() => setVisibleCount(prev => prev + 6)}
-                          className="px-8 py-3 bg-white border border-slate-200 text-slate-700 font-semibold rounded-xl hover:bg-slate-50 hover:text-primary-600 transition-colors shadow-sm"
+                          className="px-8 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-primary-600 dark:hover:text-primary-400 transition-colors shadow-sm"
                         >
                           Load More Courses
                         </button>
@@ -185,7 +205,7 @@ export default function App() {
 
                     {filteredCourses.length === 0 && (
                       <div className="text-center py-20">
-                        <p className="text-slate-500 text-lg">No courses found in this category.</p>
+                        <p className="text-slate-500 dark:text-slate-400 text-lg">No courses found in this category.</p>
                       </div>
                     )}
                   </>

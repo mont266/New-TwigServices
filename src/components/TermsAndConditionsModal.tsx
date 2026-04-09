@@ -15,13 +15,13 @@ export default function TermsAndConditionsModal({ isOpen, onClose }: TermsAndCon
         onClick={onClose}
       />
       
-      <div className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-4xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-white sticky top-0 z-10">
-          <h2 className="text-xl font-bold text-slate-900">Terms and Conditions</h2>
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 sticky top-0 z-10">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white">Terms and Conditions</h2>
           <button 
             onClick={onClose}
-            className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors"
+            className="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -29,7 +29,7 @@ export default function TermsAndConditionsModal({ isOpen, onClose }: TermsAndCon
 
         {/* Content */}
         <div className="p-6 sm:p-8 overflow-y-auto custom-scrollbar">
-          <div className="text-black [&_h2]:text-xl [&_h2]:font-bold [&_h2]:mt-8 [&_h2]:mb-4 [&_p]:mb-4 [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_li]:mb-2 [&_a]:text-primary-600 hover:[&_a]:text-primary-700 [&_a]:underline">
+          <div className="text-slate-700 dark:text-slate-300 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-slate-900 dark:[&_h2]:text-white [&_h2]:mt-8 [&_h2]:mb-4 [&_p]:mb-4 [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_li]:mb-2 [&_a]:text-primary-600 dark:[&_a]:text-primary-400 hover:[&_a]:text-primary-700 dark:hover:[&_a]:text-primary-300 [&_a]:underline">
             
             <p className="mt-0">At Twig Services Limited we believe in transparency and try to set terms out for our services, as clearly and in a ‘jargon-free’ way as possible, however, if you should have any queries, please do not hesitate to contact us at <a href="mailto:info@twigservices.co.uk">info@twigservices.co.uk</a>.</p>
 

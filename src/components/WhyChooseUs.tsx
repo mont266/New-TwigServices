@@ -21,11 +21,11 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-24 bg-white dark:bg-slate-900 relative overflow-hidden transition-colors">
       {/* Subtle background decoration */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70" />
-        <div className="absolute top-40 right-10 w-72 h-72 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary-50 dark:bg-primary-900/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70" />
+        <div className="absolute top-40 right-10 w-72 h-72 bg-blue-50 dark:bg-blue-900/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -34,7 +34,7 @@ export default function WhyChooseUs() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 text-primary-700 font-semibold text-sm mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 font-semibold text-sm mb-6"
           >
             <Award className="w-4 h-4" />
             Why Choose Twig?
@@ -45,7 +45,7 @@ export default function WhyChooseUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight"
+            className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight"
           >
             What sets Twig Services apart from the rest?
           </motion.h2>
@@ -59,15 +59,15 @@ export default function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 + 0.2 }}
-              className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full"
+              className="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl dark:hover:shadow-slate-800/50 transition-all duration-300 group flex flex-col h-full"
             >
-              <div className="w-16 h-16 rounded-2xl bg-primary-50 text-primary-600 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300 shadow-sm">
+              <div className="w-16 h-16 rounded-2xl bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-primary-600 dark:group-hover:bg-primary-500 group-hover:text-white transition-all duration-300 shadow-sm">
                 <feature.icon className="w-8 h-8" strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 leading-tight">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">
                 {feature.title}
               </h3>
-              <p className="text-slate-600 leading-relaxed flex-grow">
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed flex-grow">
                 {feature.description}
               </p>
             </motion.div>
@@ -79,10 +79,10 @@ export default function WhyChooseUs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="max-w-4xl mx-auto bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-100 text-center shadow-sm"
+          className="max-w-4xl mx-auto bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 md:p-8 border border-slate-100 dark:border-slate-700 text-center shadow-sm"
         >
-          <p className="text-sm md:text-base text-slate-500 leading-relaxed">
-            All of the following courses that we offer are 'approved' by prestigious organisations such as <strong className="text-slate-700 font-semibold">IATP, CPD, IIRSM, IFE, ILM, IoH</strong> & <strong className="text-slate-700 font-semibold">IOSH</strong> and are owned by VideoTile Learning Ltd and distributed under licence. "Our <strong className="text-slate-700 font-semibold">ETA</strong> and <strong className="text-slate-700 font-semibold">LASER</strong> Qualifications are examined via VideoTile Learning Ltd".
+          <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
+            All of the following courses that we offer are 'approved' by prestigious organisations such as <strong className="text-slate-700 dark:text-slate-200 font-semibold">IATP, CPD, IIRSM, IFE, ILM, IoH</strong> & <strong className="text-slate-700 dark:text-slate-200 font-semibold">IOSH</strong> and are owned by VideoTile Learning Ltd and distributed under licence. "Our <strong className="text-slate-700 dark:text-slate-200 font-semibold">ETA</strong> and <strong className="text-slate-700 dark:text-slate-200 font-semibold">LASER</strong> Qualifications are examined via VideoTile Learning Ltd".
           </p>
         </motion.div>
       </div>

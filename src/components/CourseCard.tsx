@@ -19,7 +19,7 @@ export default function CourseCard({ course, index }: CourseCardProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: index * 0.1 }}
-        className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full cursor-pointer"
+        className="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl dark:hover:shadow-slate-800/50 transition-all duration-300 group flex flex-col h-full cursor-pointer"
         onClick={() => setIsModalOpen(true)}
       >
         {/* Thumbnail */}
@@ -39,7 +39,7 @@ export default function CourseCard({ course, index }: CourseCardProps) {
             </div>
           )}
           <div className="absolute top-4 left-4">
-            <span className="bg-white/90 backdrop-blur-sm text-primary-600 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
+            <span className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm text-primary-600 dark:text-primary-400 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
               {course.category}
             </span>
           </div>
@@ -47,35 +47,35 @@ export default function CourseCard({ course, index }: CourseCardProps) {
 
         {/* Content */}
         <div className="p-6 flex flex-col flex-grow">
-          <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-primary-600 transition-colors">
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 line-clamp-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
             {course.title}
           </h3>
           
-          <p className="text-slate-600 text-sm mb-6 line-clamp-3 flex-grow">
+          <p className="text-slate-600 dark:text-slate-300 text-sm mb-6 line-clamp-3 flex-grow">
             {course.description}
           </p>
 
           {/* Meta Info */}
-          <div className="flex items-center gap-4 mb-6 text-sm text-slate-500 font-medium">
-            <div className="flex items-center gap-1.5 bg-slate-50 px-3 py-1.5 rounded-lg">
+          <div className="flex items-center gap-4 mb-6 text-sm text-slate-500 dark:text-slate-400 font-medium">
+            <div className="flex items-center gap-1.5 bg-slate-50 dark:bg-slate-700/50 px-3 py-1.5 rounded-lg">
               <Award className="w-4 h-4 text-primary-500" />
               <span>{course.cpdUnits} CPD</span>
             </div>
-            <div className="flex items-center gap-1.5 bg-slate-50 px-3 py-1.5 rounded-lg">
+            <div className="flex items-center gap-1.5 bg-slate-50 dark:bg-slate-700/50 px-3 py-1.5 rounded-lg">
               <Clock className="w-4 h-4 text-primary-500" />
               <span>{course.totalTime}</span>
             </div>
           </div>
 
           {/* Footer / Price */}
-          <div className="pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
+          <div className="pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between mt-auto">
             <div className="flex flex-col">
               <span className="text-xs text-slate-400 font-medium uppercase tracking-wider">Price</span>
-              <span className="text-2xl font-extrabold text-slate-900">£{course.price.toFixed(2)}</span>
+              <span className="text-2xl font-extrabold text-slate-900 dark:text-white">£{course.price.toFixed(2)}</span>
             </div>
             
             <div 
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-primary-50 text-primary-600 group-hover:bg-primary-500 group-hover:text-white transition-colors"
+              className="flex items-center justify-center w-12 h-12 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 group-hover:bg-primary-500 group-hover:text-white transition-colors"
               aria-label={`View ${course.title}`}
             >
               <ArrowRight className="w-5 h-5" />
@@ -100,11 +100,11 @@ export default function CourseCard({ course, index }: CourseCardProps) {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+              className="relative w-full max-w-3xl bg-white dark:bg-slate-900 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
             >
               <button 
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/50 hover:bg-white backdrop-blur-md rounded-full flex items-center justify-center text-slate-700 transition-colors shadow-sm"
+                className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/50 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-800 backdrop-blur-md rounded-full flex items-center justify-center text-slate-700 dark:text-slate-300 transition-colors shadow-sm"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -136,21 +136,21 @@ export default function CourseCard({ course, index }: CourseCardProps) {
                 {/* Info Section */}
                 <div className="p-6 sm:p-8">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="bg-primary-50 text-primary-600 text-sm font-bold px-3 py-1 rounded-full">
+                    <span className="bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-sm font-bold px-3 py-1 rounded-full">
                       {course.category}
                     </span>
                   </div>
                   
-                  <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-6">
                     {course.title}
                   </h2>
                   
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Main Content */}
                     <div className="md:col-span-2">
-                      <div className="prose prose-slate max-w-none mb-8">
-                        <h3 className="text-lg font-bold text-slate-900 mb-3">About this course</h3>
-                        <div className="text-slate-600 leading-relaxed whitespace-pre-wrap space-y-4">
+                      <div className="prose prose-slate dark:prose-invert max-w-none mb-8">
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3">About this course</h3>
+                        <div className="text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-wrap space-y-4">
                           {course.description.split('\n\n').map((paragraph, i) => (
                             <p key={i}>{paragraph}</p>
                           ))}
@@ -159,39 +159,31 @@ export default function CourseCard({ course, index }: CourseCardProps) {
                     </div>
 
                     {/* Sidebar / Features */}
-                    <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 h-fit">
-                      <h3 className="text-base font-bold text-slate-900 mb-4">Course Features</h3>
+                    <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 h-fit">
+                      <h3 className="text-base font-bold text-slate-900 dark:text-white mb-4">Course Features</h3>
                       
                       <div className="space-y-4">
                         <div className="flex items-start gap-3">
                           <Award className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
                           <div>
-                            <p className="text-sm font-bold text-slate-900">CPD Certified</p>
-                            <p className="text-xs text-slate-500">{course.cpdUnits} CPD Units</p>
+                            <p className="text-sm font-bold text-slate-900 dark:text-white">CPD Certified</p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400">{course.cpdUnits} CPD Units</p>
                           </div>
                         </div>
 
                         <div className="flex items-start gap-3">
                           <Clock className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
                           <div>
-                            <p className="text-sm font-bold text-slate-900">Duration</p>
-                            <p className="text-xs text-slate-500">{course.totalTime}</p>
+                            <p className="text-sm font-bold text-slate-900 dark:text-white">Duration</p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400">{course.totalTime}</p>
                           </div>
                         </div>
 
                         <div className="flex items-start gap-3">
                           <MonitorPlay className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
                           <div>
-                            <p className="text-sm font-bold text-slate-900">100% Online</p>
-                            <p className="text-xs text-slate-500">Learn at your own pace</p>
-                          </div>
-                        </div>
-
-                        <div className="flex items-start gap-3">
-                          <Trophy className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
-                          <div>
-                            <p className="text-sm font-bold text-slate-900">Certificate</p>
-                            <p className="text-xs text-slate-500">Included upon completion</p>
+                            <p className="text-sm font-bold text-slate-900 dark:text-white">100% Online</p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400">Learn at your own pace</p>
                           </div>
                         </div>
                       </div>
@@ -201,10 +193,10 @@ export default function CourseCard({ course, index }: CourseCardProps) {
               </div>
 
               {/* Sticky Footer */}
-              <div className="p-6 border-t border-slate-100 bg-white flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="p-6 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex flex-col w-full sm:w-auto text-center sm:text-left">
-                  <span className="text-sm text-slate-500 font-medium uppercase tracking-wider">Course Price</span>
-                  <span className="text-3xl font-extrabold text-slate-900">£{course.price.toFixed(2)}</span>
+                  <span className="text-sm text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wider">Course Price</span>
+                  <span className="text-3xl font-extrabold text-slate-900 dark:text-white">£{course.price.toFixed(2)}</span>
                 </div>
                 
                 <a 

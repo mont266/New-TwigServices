@@ -6,13 +6,13 @@ interface LoginPageProps {
 
 export default function LoginPage({ onBack }: LoginPageProps) {
   return (
-    <div className="min-h-[calc(100vh-80px)] bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-[calc(100vh-80px)] bg-slate-50 dark:bg-slate-900 py-12 px-4 sm:px-6 lg:px-8 transition-colors">
       <div className="max-w-6xl mx-auto">
         
         {/* Back Button */}
         <button 
           onClick={onBack}
-          className="flex items-center gap-2 text-slate-500 hover:text-primary-600 font-medium mb-8 transition-colors"
+          className="flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 font-medium mb-8 transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
           Back to Home
@@ -21,11 +21,11 @@ export default function LoginPage({ onBack }: LoginPageProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           
           {/* Business Account Login */}
-          <div className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100 flex flex-col h-full">
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col h-full">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
               Business Account<br />Login
             </h2>
-            <p className="text-lg text-slate-500 mb-8 flex-grow">
+            <p className="text-lg text-slate-500 dark:text-slate-400 mb-8 flex-grow">
               If you are a business user, please click the button below and you will be redirected to the business account login page.
             </p>
             
@@ -48,11 +48,11 @@ export default function LoginPage({ onBack }: LoginPageProps) {
           </div>
 
           {/* Candidate Account Login */}
-          <div className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100 flex flex-col h-full">
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col h-full">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mb-4">
               Candidate Account<br />Login
             </h2>
-            <p className="text-lg text-slate-500 mb-8 flex-grow">
+            <p className="text-lg text-slate-500 dark:text-slate-400 mb-8 flex-grow">
               If you are an individual or free trial user, please click the button below and you will be redirected to the candidate login page.
             </p>
             
