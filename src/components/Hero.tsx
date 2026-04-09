@@ -71,29 +71,17 @@ export default function Hero() {
             </motion.div>
 
             <motion.div 
-              className="mt-12 pt-8 border-t border-slate-100 grid grid-cols-3 gap-6"
+              className="mt-12 pt-8 border-t border-slate-100 flex items-center gap-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
               <div className="flex flex-col gap-1">
                 <div className="flex items-center gap-1 text-slate-900 font-bold text-2xl">
-                  100%
-                </div>
-                <span className="text-sm text-slate-500 font-medium">Accredited</span>
-              </div>
-              <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-1 text-slate-900 font-bold text-2xl">
-                  10k+
-                </div>
-                <span className="text-sm text-slate-500 font-medium">Learners</span>
-              </div>
-              <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-1 text-slate-900 font-bold text-2xl">
-                  5.0
+                  4.0
                   <div className="flex gap-0.5 ml-1 mb-1">
                     {[1, 2, 3, 4, 5].map((star) => (
-                      <div key={star} className="bg-[#00b67a] p-0.5 rounded-sm">
+                      <div key={star} className={`${star <= 4 ? 'bg-[#00b67a]' : 'bg-[#dcdce6]'} p-0.5 rounded-sm`}>
                         <Star className="w-3 h-3 text-white fill-white" />
                       </div>
                     ))}
@@ -132,13 +120,13 @@ export default function Hero() {
                 <div className="flex flex-col">
                   <div className="flex gap-1 mb-1.5">
                     {[1, 2, 3, 4, 5].map((star) => (
-                      <div key={star} className="bg-[#00b67a] p-1 rounded-sm">
+                      <div key={star} className={`${star <= 4 ? 'bg-[#00b67a]' : 'bg-[#dcdce6]'} p-1 rounded-sm`}>
                         <Star className="w-3 h-3 text-white fill-white" />
                       </div>
                     ))}
                   </div>
                   <div className="text-xs text-slate-500 font-medium">
-                    Rated <span className="text-slate-900 font-bold">5.0</span> on Trustpilot
+                    Rated <span className="text-slate-900 font-bold">4.0</span> on Trustpilot
                   </div>
                 </div>
               </div>

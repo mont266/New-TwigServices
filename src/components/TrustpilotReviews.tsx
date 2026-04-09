@@ -33,10 +33,10 @@ export default function TrustpilotReviews() {
             viewport={{ once: true }}
             className="flex justify-center items-center gap-2 mb-4"
           >
-            <span className="text-2xl font-bold text-slate-900">Excellent</span>
+            <span className="text-2xl font-bold text-slate-900">Great</span>
             <div className="flex gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
-                <div key={star} className="bg-[#00b67a] p-1 rounded-sm">
+                <div key={star} className={`${star <= 4 ? 'bg-[#00b67a]' : 'bg-[#dcdce6]'} p-1 rounded-sm`}>
                   <Star className="w-5 h-5 text-white fill-white" />
                 </div>
               ))}
