@@ -39,7 +39,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              Empower Your Team with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">Expert Training.</span>
+              Empower Your Workforce with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">Expert Training.</span>
             </motion.h1>
             
             <motion.p 

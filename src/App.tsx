@@ -6,6 +6,7 @@ import { db, auth } from './firebase';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import WhyChooseUs from './components/WhyChooseUs';
+import AboutUs from './components/AboutUs';
 import TrustpilotReviews from './components/TrustpilotReviews';
 import ClientPortal from './components/ClientPortal';
 import LoginPage from './components/LoginPage';
@@ -120,6 +121,7 @@ export default function App() {
           <>
             <Hero />
             <WhyChooseUs />
+            <AboutUs />
             <TrustpilotReviews />
             <ClientPortal onLoginClick={() => setIsLoginView(true)} />
             

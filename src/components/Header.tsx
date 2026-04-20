@@ -35,7 +35,7 @@ export default function Header({ onAdminClick, isAdminView, onHomeClick, isDarkM
             <nav className="hidden md:flex items-center gap-8">
               <button onClick={() => { onHomeClick(); window.scrollTo(0,0); }} className="text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors">Home</button>
               <a href="#courses" onClick={onHomeClick} className="text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors">Courses</a>
-              <a href="#" onClick={onHomeClick} className="text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors">About Us</a>
+              <a href="#about" onClick={onHomeClick} className="text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors">About Us</a>
               <button
                 onClick={toggleDarkMode}
                 className="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors"
@@ -98,7 +98,7 @@ export default function Header({ onAdminClick, isAdminView, onHomeClick, isDarkM
               <>
                 <button onClick={() => { onHomeClick(); setIsMenuOpen(false); window.scrollTo(0,0); }} className="w-full text-left px-3 py-3 text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-slate-800 hover:text-primary-600 dark:hover:text-primary-400 rounded-lg font-medium">Home</button>
                 <a href="#courses" onClick={() => { onHomeClick(); setIsMenuOpen(false); }} className="block px-3 py-3 text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-slate-800 hover:text-primary-600 dark:hover:text-primary-400 rounded-lg font-medium">Courses</a>
-                <a href="#" onClick={() => { onHomeClick(); setIsMenuOpen(false); }} className="block px-3 py-3 text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-slate-800 hover:text-primary-600 dark:hover:text-primary-400 rounded-lg font-medium">About Us</a>
+                <a href="#about" onClick={() => { onHomeClick(); setIsMenuOpen(false); }} className="block px-3 py-3 text-slate-600 dark:text-slate-300 hover:bg-primary-50 dark:hover:bg-slate-800 hover:text-primary-600 dark:hover:text-primary-400 rounded-lg font-medium">About Us</a>
                 <div className="pt-4">
                   <button 
                     onClick={() => { setIsModalOpen(true); setIsMenuOpen(false); }}
