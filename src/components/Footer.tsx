@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import Logo from './Logo';
 import PrivacyPolicyModal from './PrivacyPolicyModal';
 import TermsAndConditionsModal from './TermsAndConditionsModal';
+import { CourseCategory } from '../types';
 
 interface FooterProps {
   onAdminClick?: () => void;
+  onCategorySelect?: (category: CourseCategory) => void;
 }
 
-export default function Footer({ onAdminClick }: FooterProps) {
+export default function Footer({ onAdminClick, onCategorySelect }: FooterProps) {
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
 
@@ -49,17 +51,17 @@ export default function Footer({ onAdminClick }: FooterProps) {
           <div>
             <h4 className="text-white font-semibold mb-4">Categories</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-primary-400 transition-colors">Health & Safety</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-colors">HR & Business Skills</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-colors">Health and Social Care</a></li>
+              <li><a href="#courses" onClick={(e) => { e.preventDefault(); onCategorySelect?.('Health & Safety'); }} className="hover:text-primary-400 transition-colors">Health & Safety</a></li>
+              <li><a href="#courses" onClick={(e) => { e.preventDefault(); onCategorySelect?.('HR & Business Skills'); }} className="hover:text-primary-400 transition-colors">HR & Business Skills</a></li>
+              <li><a href="#courses" onClick={(e) => { e.preventDefault(); onCategorySelect?.('Health and Social Care'); }} className="hover:text-primary-400 transition-colors">Health and Social Care</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-white font-semibold mb-4">Company</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-primary-400 transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-colors">Contact</a></li>
+              <li><a href="#about" className="hover:text-primary-400 transition-colors">About Us</a></li>
+              <li><a href="#contact" className="hover:text-primary-400 transition-colors">Contact</a></li>
               <li>
                 <button 
                   onClick={() => setIsTermsModalOpen(true)} 
@@ -76,15 +78,17 @@ export default function Footer({ onAdminClick }: FooterProps) {
                   Privacy Policy
                 </button>
               </li>
-              {onAdminClick && (
-                <li><a href="#" onClick={handleAdminLogin} className="hover:text-primary-400 transition-colors">Admin Login</a></li>
-              )}
             </ul>
           </div>
         </div>
         
         <div className="pt-8 border-t border-slate-800 text-sm text-slate-500 flex flex-col md:flex-row justify-between items-center">
-          <p>&copy; {new Date().getFullYear()} Twig Services. All rights reserved.</p>
+          <p 
+            onDoubleClick={handleAdminLogin}
+            className="cursor-default select-none"
+          >
+            &copy; {new Date().getFullYear()} Twig Services. All rights reserved.
+          </p>
           <a 
             href="https://montforddigital.com" 
             target="_blank" 

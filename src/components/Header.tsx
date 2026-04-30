@@ -48,7 +48,7 @@ export default function Header({ onAdminClick, isAdminView, onHomeClick, isDarkM
                 className="flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
               >
                 <PhoneCall className="w-4 h-4" />
-                Get Started
+                Get a Quote
               </button>
             </nav>
           )}
@@ -105,7 +105,7 @@ export default function Header({ onAdminClick, isAdminView, onHomeClick, isDarkM
                     className="w-full flex justify-center items-center gap-2 bg-primary-500 text-white px-6 py-3 rounded-xl font-medium shadow-sm"
                   >
                     <PhoneCall className="w-4 h-4" />
-                    Get Started
+                    Get a Quote
                   </button>
                 </div>
               </>

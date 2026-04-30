@@ -61,13 +61,15 @@ export default function Hero() {
                 Explore Courses
                 <ArrowRight className="w-5 h-5" />
               </a>
-              <button 
-                onClick={() => window.dispatchEvent(new CustomEvent('open-callback-modal'))}
+              <a 
+                href="https://videotilehost.com/twigservices/freeTrial.php"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-sm hover:border-slate-300 dark:hover:border-slate-600"
               >
                 <PlayCircle className="w-5 h-5 text-primary-600 dark:text-primary-400" />
-                Get a Quote
-              </button>
+                Request a free trial
+              </a>
             </motion.div>
 
             <motion.div 

@@ -14,6 +14,7 @@ import QuoteCalculator from './components/QuoteCalculator';
 import CourseCard from './components/CourseCard';
 import Footer from './components/Footer';
 import AdminDashboard from './components/AdminDashboard';
+import WebinarWidget from './components/WebinarWidget';
 import { CourseCategory, Course } from './types';
 import { Loader2, Search } from 'lucide-react';
 
@@ -47,6 +48,19 @@ export default function App() {
   const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
   useEffect(() => {
+    const handleKeyDown = async (e: KeyboardEvent) => {
+      // Secret Admin Login: Ctrl/Cmd + Shift + L
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'l') {
+        e.preventDefault();
+        const { auth, loginWithGoogle } = await import('./firebase');
+        if (!auth.currentUser) {
+          await loginWithGoogle();
+        }
+        setIsAdminView(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    
     const unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (!currentUser) {
@@ -68,6 +82,7 @@ export default function App() {
     });
 
     return () => {
+      window.removeEventListener('keydown', handleKeyDown);
       unsubscribeAuth();
       unsubscribeDB();
     };
@@ -113,6 +128,7 @@ export default function App() {
       />
       
       <main className="flex-grow">
+        <WebinarWidget />
         {isAdminView ? (
           <AdminDashboard courses={courses} />
         ) : isLoginView ? (
@@ -220,7 +236,17 @@ export default function App() {
         )}
       </main>
 
-      <Footer onAdminClick={() => setIsAdminView(!isAdminView)} />
+      <Footer 
+        onAdminClick={() => setIsAdminView(!isAdminView)} 
+        onCategorySelect={(category) => {
+          setIsLoginView(false);
+          setActiveCategory(category);
+          // Small timeout to allow state effectively to un-hide the courses section if we were on login view
+          setTimeout(() => {
+            document.getElementById('courses')?.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }}
+      />
     </div>
   );
 }
