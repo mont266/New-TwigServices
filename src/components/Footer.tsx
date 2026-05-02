@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Logo from './Logo';
 import PrivacyPolicyModal from './PrivacyPolicyModal';
 import TermsAndConditionsModal from './TermsAndConditionsModal';
+import GdprComplianceModal from './GdprComplianceModal';
 import { CourseCategory } from '../types';
 
 interface FooterProps {
@@ -12,9 +13,10 @@ interface FooterProps {
 export default function Footer({ onAdminClick, onCategorySelect }: FooterProps) {
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
+  const [isGdprModalOpen, setIsGdprModalOpen] = useState(false);
 
   useEffect(() => {
-    if (isPrivacyModalOpen || isTermsModalOpen) {
+    if (isPrivacyModalOpen || isTermsModalOpen || isGdprModalOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -22,7 +24,7 @@ export default function Footer({ onAdminClick, onCategorySelect }: FooterProps) 
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isPrivacyModalOpen, isTermsModalOpen]);
+  }, [isPrivacyModalOpen, isTermsModalOpen, isGdprModalOpen]);
 
   const handleAdminLogin = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -78,6 +80,14 @@ export default function Footer({ onAdminClick, onCategorySelect }: FooterProps) 
                   Privacy Policy
                 </button>
               </li>
+              <li>
+                <button 
+                  onClick={() => setIsGdprModalOpen(true)} 
+                  className="hover:text-primary-400 transition-colors"
+                >
+                  GDPR Compliance
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -115,6 +125,10 @@ export default function Footer({ onAdminClick, onCategorySelect }: FooterProps) 
       <TermsAndConditionsModal 
         isOpen={isTermsModalOpen} 
         onClose={() => setIsTermsModalOpen(false)} 
+      />
+      <GdprComplianceModal 
+        isOpen={isGdprModalOpen} 
+        onClose={() => setIsGdprModalOpen(false)} 
       />
     </footer>
   );
