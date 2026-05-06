@@ -23,11 +23,11 @@ export default function CourseCard({ course, index }: CourseCardProps) {
         onClick={() => setIsModalOpen(true)}
       >
         {/* Thumbnail */}
-        <div className="relative h-48 overflow-hidden">
+        <div className="relative aspect-video overflow-hidden bg-slate-50 dark:bg-slate-900">
           <img 
             src={course.thumbnail} 
             alt={course.title} 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
@@ -122,11 +122,11 @@ export default function CourseCard({ course, index }: CourseCardProps) {
                       />
                     </div>
                   ) : (
-                    <div className="w-full h-64 sm:h-80 relative">
+                    <div className="w-full h-64 sm:h-80 relative bg-slate-50 dark:bg-slate-900">
                       <img 
                         src={course.thumbnail} 
                         alt={course.title} 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                         referrerPolicy="no-referrer"
                       />
                     </div>
