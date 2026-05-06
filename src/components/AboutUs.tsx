@@ -6,13 +6,13 @@ export default function AboutUs() {
     {
       name: 'Tom West',
       role: 'Managing Director',
-      image: '/regenerated_image_1777575276702.png',
+      image: '/images/tom.png',
       bio: 'As Managing Director, Tom has found a match made in heaven (yet another cliché!). He takes great pleasure in making customers \'happy bunnies\' through state-of-the-art, interactive video training. With tailor-made discounted packages, he helps companies maximize efficiency and keep training costs low. When he isn\'t reminiscing about the days he could watch his beloved Chelsea play second-division football for a grand total of £1.00, he is ready to help. Tom welcomes enquiries for companies up to 5,000 employees and beyond, provided you can put up with the odd cliché!'
     },
     {
       name: 'Annie Cooper',
       role: 'Operations Director',
-      image: '/regenerated_image_1777575277523.png',
+      image: '/images/annie.png',
       bio: 'Annie is the steady rock of Twig Services, bringing extensive SME and HR experience to keep everything running in \'ship-shape Bristol Fashion\'. Don\'t let her soft exterior fool you - she rules the office with an \'iron fist\' (even the directors are wary!). If you have issues, Annie will gladly \'crack a whip\' to resolve them, though we\'d advise against asking for discounts if she\'s had a bad morning. Outside work, she\'s an avid cook, summer gardener (she "hibernates like an angry bear" all winter), and a DIY enthusiast who proudly claims she\'s better at it than most!'
     }
   ];
