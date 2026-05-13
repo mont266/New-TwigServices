@@ -88,6 +88,16 @@ export default function Footer({ onAdminClick, onCategorySelect }: FooterProps) 
                   GDPR Compliance
                 </button>
               </li>
+              <li>
+                <a 
+                  href="/course-information.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary-400 transition-colors"
+                >
+                  Course Information PDF
+                </a>
+              </li>
             </ul>
           </div>
         </div>
