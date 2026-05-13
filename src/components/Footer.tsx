@@ -40,8 +40,8 @@ export default function Footer({ onAdminClick, onCategorySelect }: FooterProps) 
   return (
     <footer className="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div className="col-span-1 md:col-span-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-2">
             <div className="mb-6">
               <Logo className="scale-75 origin-left" />
             </div>
@@ -65,6 +65,22 @@ export default function Footer({ onAdminClick, onCategorySelect }: FooterProps) 
               <li><a href="#about" className="hover:text-primary-400 transition-colors">About Us</a></li>
               <li><a href="#contact" className="hover:text-primary-400 transition-colors">Contact</a></li>
               <li>
+                <a 
+                  href="/course-information.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary-400 transition-colors"
+                >
+                  Course Information PDF
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="text-white font-semibold mb-4">Legal</h4>
+            <ul className="space-y-2">
+              <li>
                 <button 
                   onClick={() => setIsTermsModalOpen(true)} 
                   className="hover:text-primary-400 transition-colors"
@@ -87,16 +103,6 @@ export default function Footer({ onAdminClick, onCategorySelect }: FooterProps) 
                 >
                   GDPR Compliance
                 </button>
-              </li>
-              <li>
-                <a 
-                  href="/course-information.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary-400 transition-colors"
-                >
-                  Course Information PDF
-                </a>
               </li>
             </ul>
           </div>
