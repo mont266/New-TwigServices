@@ -5,7 +5,7 @@ const features = [
   {
     icon: Users,
     title: "Learning Management System",
-    description: "Our Staff Training Platform is user-friendly and engaging software, which is a mixture of interactive animation and real-life online role play videos and NOT a stereotypical 'voice and/or text with an image' based e-Learning platform!"
+    description: "Our Learning Management System offers a staff training experience that goes far beyond the typical 'voice-over with text and images' approach. Instead, our courses combine interactive animations and real-life online role-play videos, a method proven to significantly improve learning engagement and retention."
   },
   {
     icon: MonitorPlay,

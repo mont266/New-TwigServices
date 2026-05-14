@@ -118,7 +118,7 @@ export default function App() {
   const displayedCourses = isSearching ? filteredCourses : filteredCourses.slice(0, visibleCount);
 
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="min-h-screen flex flex-col font-sans overflow-x-hidden max-w-[100vw]">
       <Header 
         isAdminView={isAdminView} 
         onAdminClick={() => setIsAdminView(!isAdminView)} 
