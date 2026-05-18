@@ -11,6 +11,7 @@ import TrustpilotReviews from './components/TrustpilotReviews';
 import ClientPortal from './components/ClientPortal';
 import LoginPage from './components/LoginPage';
 import QuoteCalculator from './components/QuoteCalculator';
+import ContactUs from './components/ContactUs';
 import CourseCard from './components/CourseCard';
 import Footer from './components/Footer';
 import AdminDashboard from './components/AdminDashboard';
@@ -231,6 +232,7 @@ export default function App() {
               </div>
             </section>
 
+            <ContactUs />
             <QuoteCalculator />
           </>
         )}

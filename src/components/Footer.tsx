@@ -62,8 +62,8 @@ export default function Footer({ onAdminClick, onCategorySelect }: FooterProps) 
           <div>
             <h4 className="text-white font-semibold mb-4">Company</h4>
             <ul className="space-y-2">
-              <li><a href="#about" className="hover:text-primary-400 transition-colors">About Us</a></li>
-              <li><a href="#contact" className="hover:text-primary-400 transition-colors">Contact</a></li>
+              <li><a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); }} className="hover:text-primary-400 transition-colors">About Us</a></li>
+              <li><a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="hover:text-primary-400 transition-colors">Contact</a></li>
               <li>
                 <a 
                   href="/course-information.pdf"
