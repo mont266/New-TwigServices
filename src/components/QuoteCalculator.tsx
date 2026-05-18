@@ -68,7 +68,7 @@ export default function QuoteCalculator() {
             transition={{ delay: 0.2 }}
             className="text-lg text-slate-600 dark:text-slate-400"
           >
-            Get an instant estimate for your organization. We offer flexible pricing plans for teams of all sizes.
+            Get an instant estimate for your organisation. We offer flexible pricing plans for teams of all sizes.
           </motion.p>
         </div>
 

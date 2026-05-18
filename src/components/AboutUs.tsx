@@ -7,7 +7,7 @@ export default function AboutUs() {
       name: 'Tom West',
       role: 'Managing Director',
       image: '/regenerated_image_1777575276702.png',
-      bio: 'As Managing Director, Tom has found a match made in heaven (yet another cliché!). He takes great pleasure in making customers \'happy bunnies\' through state-of-the-art, interactive video training. With tailor-made discounted packages, he helps companies maximize efficiency and keep training costs low. When he isn\'t reminiscing about the days he could watch his beloved Chelsea play second-division football for a grand total of £1.00, he is ready to help. Tom welcomes enquiries for companies up to 5,000 employees and beyond, provided you can put up with the odd cliché!'
+      bio: 'As Managing Director, Tom has found a match made in heaven (yet another cliché!). He takes great pleasure in making customers \'happy bunnies\' through state-of-the-art, interactive video training. With tailor-made discounted packages, he helps companies maximise efficiency and keep training costs low. When he isn\'t reminiscing about the days he could watch his beloved Chelsea play second-division football for a grand total of £1.00, he is ready to help. Tom welcomes enquiries for companies up to 5,000 employees and beyond, provided you can put up with the odd cliché!'
     },
     {
       name: 'Annie Cooper',

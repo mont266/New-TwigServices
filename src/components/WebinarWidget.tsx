@@ -73,7 +73,7 @@ export default function WebinarWidget() {
               
               <div className="p-4 sm:p-6 overflow-y-auto flex-1 custom-scrollbar">
                 <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4 sm:mb-6">
-                  Schedule a personalized webinar with our team to explore our training platform, discuss your needs, and see how Twig Services can empower your workforce.
+                  Schedule a personalised webinar with our team to explore our training platform, discuss your needs, and see how Twig Services can empower your workforce.
                 </p>
 
                 <div className="min-h-[400px] h-[60vh] sm:h-[550px] w-full bg-white rounded-xl overflow-hidden relative border border-slate-100 dark:border-slate-700">

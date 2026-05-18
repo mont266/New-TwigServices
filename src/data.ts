@@ -15,7 +15,7 @@ export const COURSES: Course[] = [
   {
     id: '2',
     title: 'Effective Leadership & Management',
-    description: 'Develop essential leadership skills to manage teams effectively, resolve conflicts, and drive organizational success.',
+    description: 'Develop essential leadership skills to manage teams effectively, resolve conflicts, and drive organisational success.',
     thumbnail: 'https://picsum.photos/seed/leadership/600/400',
     category: 'HR & Business Skills',
     cpdUnits: 5,
@@ -26,7 +26,7 @@ export const COURSES: Course[] = [
   {
     id: '3',
     title: 'Safeguarding Vulnerable Adults',
-    description: 'Understand the principles of safeguarding, how to recognize signs of abuse, and the correct procedures for reporting concerns.',
+    description: 'Understand the principles of safeguarding, how to recognise signs of abuse, and the correct procedures for reporting concerns.',
     thumbnail: 'https://picsum.photos/seed/safeguarding/600/400',
     category: 'Health and Social Care',
     cpdUnits: 3,
