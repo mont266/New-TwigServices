@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://twigservices.co.uk/sitemap.xml
