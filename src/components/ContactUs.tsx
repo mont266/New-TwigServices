@@ -65,7 +65,7 @@ export default function ContactUs() {
             transition={{ delay: 0.2 }}
             className="text-lg text-slate-600 dark:text-slate-400"
           >
-            Have a question or need more information? We are here to help. Send us a message or use our contact details below.
+            Please note - office visits must be arranged by appointment only. If you have a question or need further details, our team is ready to assist. Simply send us a message or complete the contact‑us form below.
           </motion.p>
         </div>
 

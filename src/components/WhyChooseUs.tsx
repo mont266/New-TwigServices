@@ -10,7 +10,7 @@ const features = [
   {
     icon: MonitorPlay,
     title: "~150 E-Learning Courses",
-    description: "We have more than 150 courses on Health & Safety, HR, Business Skills, Food Safety, Childcare and Health & Social Care to choose from which start from just £15.00 per licence!"
+    description: "We have more than 150 courses on Health & Safety, HR, Business Skills, Food Safety, Childcare and Health & Social Care to choose from which start from just now £10.00 per licence!"
   },
   {
     icon: PiggyBank,

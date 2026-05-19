@@ -4,6 +4,7 @@ import PrivacyPolicyModal from './PrivacyPolicyModal';
 import TermsAndConditionsModal from './TermsAndConditionsModal';
 import GdprComplianceModal from './GdprComplianceModal';
 import { CourseCategory } from '../types';
+import { Facebook, Instagram, Twitter, Linkedin, Video } from 'lucide-react';
 
 interface FooterProps {
   onAdminClick?: () => void;
@@ -48,6 +49,23 @@ export default function Footer({ onAdminClick, onCategorySelect }: FooterProps) 
             <p className="text-slate-400 max-w-sm mb-6">
               Your trusted partner for premium e-learning. We provide accredited courses to help your workforce stay compliant, safe, and skilled.
             </p>
+            <div className="flex items-center gap-4">
+              <a href="https://www.facebook.com/share/1Gaog5iDvW/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-primary-400 transition-colors" aria-label="Facebook">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="https://www.instagram.com/twig.services?igsh=MWdyNTJ0b2ZzaDB0cQ==" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-primary-400 transition-colors" aria-label="Instagram">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="https://x.com/TwigServicesLtd?t=Bw7Swo79XPRp-tk-e3VIVg&s=09" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-primary-400 transition-colors" aria-label="X (Twitter)">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="https://www.linkedin.com/company/twig-services-ltd/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-primary-400 transition-colors" aria-label="LinkedIn">
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a href="https://vimeo.com/user72522235" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-primary-400 transition-colors" aria-label="Vimeo">
+                <Video className="w-5 h-5" />
+              </a>
+            </div>
           </div>
           
           <div>

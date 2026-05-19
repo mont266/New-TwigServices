@@ -40,9 +40,9 @@ export default function QuoteCalculator() {
   };
 
   return (
-    <section className="py-24 bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 transition-colors">
+    <section id="quote" className="py-24 bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-16 max-w-4xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -61,15 +61,17 @@ export default function QuoteCalculator() {
           >
             Calculate Your Training Costs
           </motion.h2>
-          <motion.p 
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-600 dark:text-slate-400"
+            className="text-lg text-slate-600 dark:text-slate-400 space-y-4"
           >
-            Get an instant estimate for your organisation. We offer flexible pricing plans for teams of all sizes.
-          </motion.p>
+            <p>Generate an instant estimate with our quick quote calculator.</p>
+            <p>For exact pricing based on your current workforce headcount - or to check available discounts for paying your subscription in full — speak to our team.</p>
+            <p className="text-sm">Prices shown are based on interest‑free Direct Debit plans.</p>
+          </motion.div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-5xl mx-auto">
