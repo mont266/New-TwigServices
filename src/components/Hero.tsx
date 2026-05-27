@@ -48,7 +48,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Experience user-friendly, high-quality training with over 150 expert-designed courses across Health &amp; Safety, HR, Business Skills, Food Safety, Childcare, and Health &amp; Social Care-everything you need to stay compliant and keep your team progressing.
+              Stay compliant and keep your team progressing with flexible online training, including IOSH Managing Safely, Virtual Instructor Led Training (VILT) and Micro Courses.
             </motion.p>
             
             <motion.div 
