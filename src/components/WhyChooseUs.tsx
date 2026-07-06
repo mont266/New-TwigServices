@@ -81,8 +81,11 @@ export default function WhyChooseUs() {
           transition={{ delay: 0.5 }}
           className="max-w-4xl mx-auto bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 md:p-8 border border-slate-100 dark:border-slate-700 text-center shadow-sm"
         >
-          <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
+          <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
             All of the following courses that we offer are 'approved' by prestigious organisations such as <strong className="text-slate-700 dark:text-slate-200 font-semibold">IATP, CPD, IIRSM, IFE, ILM, IoH</strong> & <strong className="text-slate-700 dark:text-slate-200 font-semibold">IOSH</strong> and are owned by VideoTile Learning Ltd and distributed under licence. "Our <strong className="text-slate-700 dark:text-slate-200 font-semibold">ETA</strong> and <strong className="text-slate-700 dark:text-slate-200 font-semibold">LASER</strong> Qualifications are examined via VideoTile Learning Ltd".
+          </p>
+          <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
+            We work in partnership with VideoTile Learning to deliver online IOSH Approved Managing Safely & Working Safely. The courses are delivered via their platform. As an agent for these courses, we are not directly approved by or associated with IOSH
           </p>
         </motion.div>
       </div>
