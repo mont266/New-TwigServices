@@ -4,6 +4,7 @@ import PrivacyPolicyModal from './PrivacyPolicyModal';
 import TermsAndConditionsModal from './TermsAndConditionsModal';
 import GdprComplianceModal from './GdprComplianceModal';
 import { CourseCategory } from '../types';
+import { Facebook, Instagram, Twitter, Linkedin, Video } from 'lucide-react';
 
 interface FooterProps {
   onAdminClick?: () => void;
@@ -29,25 +30,52 @@ export default function Footer({ onAdminClick, onCategorySelect }: FooterProps) 
   const handleAdminLogin = async (e: React.MouseEvent) => {
     e.preventDefault();
     if (onAdminClick) {
-      const { auth, loginWithGoogle } = await import('../firebase');
-      if (!auth.currentUser) {
-        await loginWithGoogle();
+      try {
+        const { auth, loginWithGoogle } = await import('../firebase');
+        if (!auth.currentUser) {
+          await loginWithGoogle();
+        }
+        onAdminClick();
+      } catch (error: any) {
+        if (error.code === 'auth/unauthorized-domain') {
+          alert('Firebase Auth Error: This domain is not authorized. Please add the app URL to your Firebase Console under Authentication -> Settings -> Authorized domains.');
+        } else if (error.code === 'auth/popup-closed-by-user') {
+          // Ignore, user just closed it
+        } else {
+          alert('Failed to sign in: ' + (error.message || 'Unknown error'));
+        }
       }
-      onAdminClick();
     }
   };
 
   return (
     <footer className="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div className="col-span-1 md:col-span-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-2">
             <div className="mb-6">
               <Logo className="scale-75 origin-left" />
             </div>
             <p className="text-slate-400 max-w-sm mb-6">
               Your trusted partner for premium e-learning. We provide accredited courses to help your workforce stay compliant, safe, and skilled.
             </p>
+            <div className="flex items-center gap-4">
+              <a href="https://www.facebook.com/share/1Gaog5iDvW/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-primary-400 transition-colors" aria-label="Facebook">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="https://www.instagram.com/twig.services?igsh=MWdyNTJ0b2ZzaDB0cQ==" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-primary-400 transition-colors" aria-label="Instagram">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="https://x.com/TwigServicesLtd?t=Bw7Swo79XPRp-tk-e3VIVg&s=09" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-primary-400 transition-colors" aria-label="X (Twitter)">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="https://www.linkedin.com/company/twig-services-ltd/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-primary-400 transition-colors" aria-label="LinkedIn">
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a href="https://vimeo.com/user72522235" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-primary-400 transition-colors" aria-label="Vimeo">
+                <Video className="w-5 h-5" />
+              </a>
+            </div>
           </div>
           
           <div>
@@ -62,8 +90,24 @@ export default function Footer({ onAdminClick, onCategorySelect }: FooterProps) 
           <div>
             <h4 className="text-white font-semibold mb-4">Company</h4>
             <ul className="space-y-2">
-              <li><a href="#about" className="hover:text-primary-400 transition-colors">About Us</a></li>
-              <li><a href="#contact" className="hover:text-primary-400 transition-colors">Contact</a></li>
+              <li><a href="#about" onClick={(e) => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); }} className="hover:text-primary-400 transition-colors">About Us</a></li>
+              <li><a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="hover:text-primary-400 transition-colors">Contact</a></li>
+              <li>
+                <a 
+                  href="/course-information.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary-400 transition-colors"
+                >
+                  Course Information PDF
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="text-white font-semibold mb-4">Legal</h4>
+            <ul className="space-y-2">
               <li>
                 <button 
                   onClick={() => setIsTermsModalOpen(true)} 
