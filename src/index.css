@@ -11,6 +11,10 @@
   --color-primary-600: #0284c7;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Inter", sans-serif;
   @apply bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50;

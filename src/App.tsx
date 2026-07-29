@@ -11,6 +11,7 @@ import TrustpilotReviews from './components/TrustpilotReviews';
 import ClientPortal from './components/ClientPortal';
 import LoginPage from './components/LoginPage';
 import QuoteCalculator from './components/QuoteCalculator';
+import ContactUs from './components/ContactUs';
 import CourseCard from './components/CourseCard';
 import Footer from './components/Footer';
 import AdminDashboard from './components/AdminDashboard';
@@ -118,7 +119,7 @@ export default function App() {
   const displayedCourses = isSearching ? filteredCourses : filteredCourses.slice(0, visibleCount);
 
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="min-h-screen flex flex-col font-sans overflow-x-hidden max-w-[100vw]">
       <Header 
         isAdminView={isAdminView} 
         onAdminClick={() => setIsAdminView(!isAdminView)} 
@@ -145,9 +146,9 @@ export default function App() {
             <section id="courses" className="py-20 bg-slate-50 dark:bg-slate-900 transition-colors">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Our Course Catalog</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Our Course Catalogue</h2>
                   <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-                    Browse our comprehensive range of accredited e-learning courses designed to meet your organization's training needs.
+                    Browse our comprehensive range of accredited e-learning courses designed to meet your organisation's training needs.
                   </p>
                 </div>
 
@@ -231,6 +232,7 @@ export default function App() {
               </div>
             </section>
 
+            <ContactUs />
             <QuoteCalculator />
           </>
         )}

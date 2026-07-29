@@ -15,7 +15,7 @@ export default function Hero() {
         <div className="w-[500px] h-[500px] bg-blue-100/60 rounded-full blur-[100px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-32 lg:pb-32 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-20 pb-24 lg:pt-32 lg:pb-32 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           
           {/* Left Column: Text Content */}
@@ -34,12 +34,12 @@ export default function Hero() {
             </motion.div>
             
             <motion.h1 
-              className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8 leading-[1.05]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8 leading-[1.05]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              Empower Your Workforce with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">Expert Training.</span>
+              Unlock Your Workforce&apos;s Potential with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">Expert Training Solutions.</span>
             </motion.h1>
             
             <motion.p 
@@ -48,7 +48,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              High-quality, accredited online courses in Health & Safety, HR, and Social Care. Designed to keep your business compliant and your team growing.
+              Stay compliant and keep your team progressing with flexible online training, including IOSH Managing Safely, Virtual Instructor Led Training (VILT) and Micro Courses.
             </motion.p>
             
             <motion.div 
